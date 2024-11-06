@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Phone store</h2>
+            <p>Product management system</p>
+        </div>
+        <div class="inputForm">
+            <form class="row g-3">
+
+                <div class="col-12">
+                    <label for="InputProductName" class="visually-hidden">Product Name</label>
+                    <input type="text" class="form-control" id="productName" placeholder="Product Name">
+                </div>
+        
+                <div class="col-2">
+                    
+                    <label for="InputPrice" class="visually-hidden">Price</label>
+                    <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                           onkeyup="getTotal()" type="text" 
+                           class="form-control" id="price" placeholder="Price">
+                </div>
+                  <div class="col-2">
+                    <label for="InputPrice" class="visually-hidden">Taxes</label>
+                    <input oninput="this.value = this.value.replace(/[^0-9]/g, '')"  onkeyup="getTotal()" type="text" class="form-control" id="taxes" placeholder="Taxes">
+                  </div>
+                  <div class="col-2">
+                    <label for="InputPrice" class="visually-hidden">Ads</label>
+                    <input oninput="this.value = this.value.replace(/[^0-9]/g, '')"  onkeyup="getTotal()" type="text" class="form-control" id="ads" placeholder="Ads">
+                  </div>
+                
+                  <div class="col-2">
+                    <label for="InputPrice" class="visually-hidden">Discount</label>
+                    <input oninput="this.value = this.value.replace(/[^0-9]/g, '')"  onkeyup="getTotal()" type="text" class="form-control" id="discount" placeholder="Discount">
+                  </div>
+
+
+                <div class="col-auto">
+                  <button type="submit" id="submit" class="btn btn-primary mb-3" disabled>Create</button>
+                </div>
+                  <div class="col-2">
+                    <p id="totalPrice"></p>
+                  </div>
+
+
+                <div class="col-2">
+                    <label for="InputAmount" class="visually-hidden">Amount</label>
+                    <input type="number" class="form-control" id="amount" placeholder="Amount">
+                </div>
+        
+                <div class="col-4">
+                    <label for="InputCategory" class="visually-hidden">Category</label>
+                    <input type="text" class="form-control" id="category" placeholder="Category">
+                </div>
+              </form>
+              <hr class="border border-primary border-2 opacity-50">
+
+            
+        </div>
+        <div class="seachInput">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for .." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button">Search By Products</button>
+                <button class="btn btn-outline-primary" type="button">Search By Categories</button>
+                </div>
+            </div>
+            <hr class="border border-primary border-2 opacity-50">
+        </div>
+
+        <div class="allData">
+            <h2>All Products</h2>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Taxes</th>
+                    <th scope="col">Ads</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Operations</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <th scope="row">Iphone 16</th>
+                      <td>90000</td>
+                      <td>600</td>
+                      <td>30</td>
+                      <td>50</td>
+                      <td>85000</td>
+                      <td>Iphone</td>
+                      <td>
+                        <button type="button" id="editBTN">Edit</button>
+                        <button type="button" id="removeBTN">Remove</button>
+                    </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Iphone 16</th>
+                      <td>90000</td>
+                      <td>600</td>
+                      <td>30</td>
+                      <td>50</td>
+                      <td>85000</td>
+                      <td>Iphone</td>
+                      <td>
+                          <button type="button" id="editBTN">Edit</button>
+                          <button type="button" id="removeBTN">Remove</button>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
