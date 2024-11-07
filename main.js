@@ -72,3 +72,31 @@ function clearInputs(){
     amount.value='',
     category.value=''
 }
+
+
+
+
+// Read all products stored in localStorage 
+function showAllProducts(){
+    let table = '';
+    for(let i = 0; i < products.length; i++){
+        table += `
+        <tr>
+            <td scope="row">${products[i].name}</td>
+            <td>${products[i].price}</td>
+            <td>${products[i].taxes}</td>
+            <td>${products[i].ads}</td>
+            <td>${products[i].discount}</td>
+            <td>${products[i].total}</td>
+            <td>${products[i].category}</td>
+            <td>
+                <button type="button" id="editBTN">Edit</button>
+                <button type="button" id="removeBTN">Remove</button>
+            </td>
+        </tr>
+        `;
+    }
+    document.getElementById('tbody').innerHTML = table;
+}
+
+showAllProducts();
