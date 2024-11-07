@@ -1,3 +1,6 @@
+// Count the total price
+////////////////////////
+
 let name = document.getElementById('productName');
 let price = document.getElementById('price');
 let taxes = document.getElementById('taxes');
@@ -22,4 +25,50 @@ function getTotal(){
         totalPrice.style.color = 'blue';
     }
     
+}
+
+
+
+//Create products
+/////////////////
+
+let products;
+if(localStorage.products != null){
+    products = JSON.parse(localStorage.products);
+}else{
+    products = [];
+}
+
+submit.onclick = function (){
+    let productObject = {
+        name:name.value,
+        price:price.value,
+        ads:ads.value,
+        taxes:taxes.value,
+        discount:discount.value,
+        total:totalPrice.innerHTML,
+        amount:amount.value,
+        category:category.value
+    }
+    products.push(productObject);
+    localStorage.setItem('products', JSON.stringify(products));
+    clearInputs();
+}
+
+
+
+
+
+// clear inputs after submitting the product
+////////////////////////////////////////////
+
+function clearInputs(){
+    name.value='',
+    price.value='',
+    ads.value='',
+    taxes.value='',
+    totalPrice.innerHTML='', 
+    discount.value='',
+    amount.value='',
+    category.value=''
 }

@@ -14,7 +14,7 @@
             <p>Product management system</p>
         </div>
         <div class="inputForm">
-            <form class="row g-3">
+            <form class="row g-3" action="#">
 
                 <div class="col-12">
                     <label for="InputProductName" class="visually-hidden">Product Name</label>
@@ -43,10 +43,8 @@
                   </div>
 
 
-                <div class="col-auto">
-                  <button type="submit" id="submit" class="btn btn-primary mb-3" disabled>Create</button>
-                </div>
-                  <div class="col-2">
+                
+                  <div class="col-4">
                     <p id="totalPrice"></p>
                   </div>
 
@@ -59,6 +57,9 @@
                 <div class="col-4">
                     <label for="InputCategory" class="visually-hidden">Category</label>
                     <input type="text" class="form-control" id="category" placeholder="Category">
+                </div>
+                <div class="col-auto">
+                  <button type="submit" id="submit" class="btn btn-primary mb-3" >Create</button>
                 </div>
               </form>
               <hr class="border border-primary border-2 opacity-50">
