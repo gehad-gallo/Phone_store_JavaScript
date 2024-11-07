@@ -91,12 +91,25 @@ function showAllProducts(){
             <td>${products[i].category}</td>
             <td>
                 <button type="button" id="editBTN">Edit</button>
-                <button type="button" id="removeBTN">Remove</button>
+                <button type="button" onclick="deletProduct(${i})" id="removeBTN">Remove</button>
             </td>
         </tr>
         `;
     }
     document.getElementById('tbody').innerHTML = table;
 }
-
 showAllProducts();
+
+
+
+
+
+// Delete specific product
+///////////////////////////
+
+function deletProduct(i){
+    window.alert("Are you sure that you wnat to delete thid Item!");
+    products.splice(i,1);
+    localStorage.products = JSON.stringify(products);
+    showAllProducts();
+}
