@@ -64,3 +64,13 @@ h2{
     letter-spacing: 2px;
     transition: 0.5s;
 }
+
+#removeAllBtn{
+    padding: 8px;
+    border: none;
+    color: white;
+    background-color: red;
+    border-radius: 12px;
+    float: right; /* This aligns the button to the right */
+    margin-right: 80px;
+}

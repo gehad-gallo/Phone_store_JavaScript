@@ -53,6 +53,7 @@ submit.onclick = function (){
     products.push(productObject);
     localStorage.setItem('products', JSON.stringify(products));
     clearInputs();
+    showAllProducts();
 }
 
 
@@ -96,6 +97,14 @@ function showAllProducts(){
         </tr>
         `;
     }
+    let deleteAllDev = document.getElementById('deleteAllDev');
+
+    if(products.length > 0){
+        
+        deleteAllDev.innerHTML = `<button type="button" id="removeAllBtn" onclick="deleteAllProducts()" >Delete all</button>`;
+    }else{
+        deleteAllDev.innerHTML = '';
+    }
     document.getElementById('tbody').innerHTML = table;
 }
 showAllProducts();
@@ -111,5 +120,16 @@ function deletProduct(i){
     window.alert("Are you sure that you wnat to delete thid Item!");
     products.splice(i,1);
     localStorage.products = JSON.stringify(products);
+    showAllProducts();
+}
+
+
+//Delete all products
+///////////////////////
+
+function deleteAllProducts(){
+    window.alert('Are You sure you want to delete all products!');
+    localStorage.clear();
+    products.splice(0);
     showAllProducts();
 }
