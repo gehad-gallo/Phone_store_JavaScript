@@ -8,6 +8,7 @@ let ads = document.getElementById('ads');
 let discount = document.getElementById('discount');
 let submit = document.getElementById('submit');
 let totalPrice = document.getElementById('totalPrice');
+let totalPriceForStore = '';
 let amount = document.getElementById('amount');
 let category = document.getElementById('category');
 
@@ -21,6 +22,7 @@ function getTotal(){
     // Calculate total
     if(priceValue > 0){
         let result = (priceValue + taxesValue + adsValue) - discountValue;
+        totalPriceForStore = result;
         totalPrice.innerHTML = 'Total: ' + result + ' EGP';
         totalPrice.style.color = 'blue';
     }
@@ -46,11 +48,19 @@ submit.onclick = function (){
         ads:ads.value,
         taxes:taxes.value,
         discount:discount.value,
-        total:totalPrice.innerHTML,
+        total:totalPriceForStore,
         amount:amount.value,
         category:category.value
     }
-    products.push(productObject);
+
+    if(productObject.amount > 1){
+        for(let i=0; i<productObject.amount; i++){
+            products.push(productObject);
+        }
+    }else{
+        products.push(productObject);
+    }
+    
     localStorage.setItem('products', JSON.stringify(products));
     clearInputs();
     showAllProducts();
@@ -71,7 +81,8 @@ function clearInputs(){
     totalPrice.innerHTML='', 
     discount.value='',
     amount.value='',
-    category.value=''
+    category.value='',
+    totalPriceForStore=''
 }
 
 
@@ -101,7 +112,7 @@ function showAllProducts(){
 
     if(products.length > 0){
         
-        deleteAllDev.innerHTML = `<button type="button" id="removeAllBtn" onclick="deleteAllProducts()" >Delete all</button>`;
+        deleteAllDev.innerHTML = `<button type="button" id="removeAllBtn" onclick="deleteAllProducts()" >Delete all (${products.length})</button>`;
     }else{
         deleteAllDev.innerHTML = '';
     }
