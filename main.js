@@ -12,6 +12,8 @@ let totalPriceForStore = '';
 let amount = document.getElementById('amount');
 let category = document.getElementById('category');
 
+let mood = 'create';
+let tmp;
 
 function getTotal(){
     let priceValue = parseInt(price.value) || 0;
@@ -53,12 +55,17 @@ submit.onclick = function (){
         category:category.value
     }
 
-    if(productObject.amount > 1){
+    if(mood === 'create'){
+        if(productObject.amount > 1){
         for(let i=0; i<productObject.amount; i++){
             products.push(productObject);
         }
+        }else{
+            products.push(productObject);
+        }
     }else{
-        products.push(productObject);
+        products[tmp] = productObject;
+        mood = 'create';
     }
     
     localStorage.setItem('products', JSON.stringify(products));
@@ -102,7 +109,7 @@ function showAllProducts(){
             <td>${products[i].total}</td>
             <td>${products[i].category}</td>
             <td>
-                <button type="button" id="editBTN">Edit</button>
+                <button type="button" onclick="updateProduct(${i})" id="editBTN">Edit</button>
                 <button type="button" onclick="deletProduct(${i})" id="removeBTN">Remove</button>
             </td>
         </tr>
@@ -126,12 +133,12 @@ showAllProducts();
 
 // Delete specific product
 ///////////////////////////
-
-function deletProduct(i){
-    window.alert("Are you sure that you wnat to delete thid Item!");
-    products.splice(i,1);
-    localStorage.products = JSON.stringify(products);
-    showAllProducts();
+function deletProduct(i) {
+    if (window.confirm("Are you sure that you want to delete this item?")) {
+        products.splice(i, 1);
+        localStorage.products = JSON.stringify(products);
+        showAllProducts();
+    }
 }
 
 
@@ -139,8 +146,32 @@ function deletProduct(i){
 ///////////////////////
 
 function deleteAllProducts(){
-    window.alert('Are You sure you want to delete all products!');
-    localStorage.clear();
-    products.splice(0);
-    showAllProducts();
+    if( window.confirm('Are You sure you want to delete all products!')){
+        localStorage.clear();
+        products.splice(0);
+        showAllProducts();
+    };
+    
+}
+
+
+//Update product 
+////////////////////
+function updateProduct(i){
+    name.value = products[i].name;
+    price.value = products[i].price;
+    ads.value = products[i].ads;
+    taxes.value = products[i].taxes;
+    discount.value = products[i].discount;
+    getTotal();
+    amount.style.display = "none";
+    category.value = products[i].category;
+    submit.innerHTML = 'Update';
+    mood = 'update';
+    tmp = i;
+    scroll({
+        top:0,
+        behavior: 'smooth'
+    })
+
 }
