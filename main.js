@@ -15,6 +15,8 @@ let category = document.getElementById('category');
 let mood = 'create';
 let tmp;
 
+let searchMood = 'name'; 
+
 function getTotal(){
     let priceValue = parseInt(price.value) || 0;
     let taxesValue = parseInt(taxes.value) || 0;
@@ -45,14 +47,14 @@ if(localStorage.products != null){
 
 submit.onclick = function (){
     let productObject = {
-        name:name.value,
+        name:name.value.toLowerCase(),
         price:price.value,
         ads:ads.value,
         taxes:taxes.value,
         discount:discount.value,
         total:totalPriceForStore,
         amount:amount.value,
-        category:category.value
+        category:category.value.toLowerCase(),
     }
 
     if(mood === 'create'){
@@ -66,6 +68,7 @@ submit.onclick = function (){
     }else{
         products[tmp] = productObject;
         mood = 'create';
+        amount.style.display = "block";
     }
     
     localStorage.setItem('products', JSON.stringify(products));
@@ -174,4 +177,69 @@ function updateProduct(i){
         behavior: 'smooth'
     })
 
+}
+
+function getSearchMood(id){
+    let search = document.getElementById('seachInput');
+    if(id == 'nameSearch'){
+        searchMood = 'name';
+    }else{
+        searchMood = 'category';
+    }
+    search.placeholder = 'Search By ' + searchMood;
+    search.focus();
+    search.value = '';
+    showAllProducts();
+    
+}
+
+function searchData(value){
+    let table ='';
+    if(searchMood == 'name'){
+        for(let i=0; i<products.length; i++){
+            if(products[i].name.includes(value.toLowerCase())){
+                table += `
+                <tr>
+                    <td scope="row">${products[i].name}</td>
+                    <td>${products[i].price}</td>
+                    <td>${products[i].taxes}</td>
+                    <td>${products[i].ads}</td>
+                    <td>${products[i].discount}</td>
+                    <td>${products[i].total}</td>
+                    <td>${products[i].category}</td>
+                    <td>
+                        <button type="button" onclick="updateProduct(${i})" id="editBTN">Edit</button>
+                        <button type="button" onclick="deletProduct(${i})" id="removeBTN">Remove</button>
+                    </td>
+                </tr>
+                `;
+            }else{
+                document.getElementById('tbody').innerHTML = table;
+
+            }
+        }
+    }else{
+        for(let i=0; i<products.length; i++){
+            if(products[i].category.includes(value.toLowerCase())){
+                table += `
+                <tr>
+                    <td scope="row">${products[i].name}</td>
+                    <td>${products[i].price}</td>
+                    <td>${products[i].taxes}</td>
+                    <td>${products[i].ads}</td>
+                    <td>${products[i].discount}</td>
+                    <td>${products[i].total}</td>
+                    <td>${products[i].category}</td>
+                    <td>
+                        <button type="button" onclick="updateProduct(${i})" id="editBTN">Edit</button>
+                        <button type="button" onclick="deletProduct(${i})" id="removeBTN">Remove</button>
+                    </td>
+                </tr>
+                `;
+            }else{
+                document.getElementById('tbody').innerHTML = table;
+
+            }
+        }
+    }
 }

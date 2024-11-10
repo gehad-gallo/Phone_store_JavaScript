@@ -68,10 +68,10 @@
         </div>
         <div class="seachInput">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for .." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <input type="text" onkeyup="searchData(this.value)" id="seachInput" class="form-control" placeholder="Search for .." aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                <button class="btn btn-outline-primary" type="button">Search By Products</button>
-                <button class="btn btn-outline-primary" type="button">Search By Categories</button>
+                <button class="btn btn-outline-primary" type="button" onclick="getSearchMood(this.id)" id="nameSearch">Search By Name</button>
+                <button class="btn btn-outline-primary" type="button" onclick="getSearchMood(this.id)" id="categorySearch">Search By Categories</button>
                 </div>
             </div>
             <hr class="border border-primary border-2 opacity-50">
