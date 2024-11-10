@@ -44,37 +44,49 @@ if(localStorage.products != null){
 }else{
     products = [];
 }
-
-submit.onclick = function (){
+submit.onclick = function () {
+    // Create a new product object from the input values
     let productObject = {
-        name:name.value.toLowerCase(),
-        price:price.value,
-        ads:ads.value,
-        taxes:taxes.value,
-        discount:discount.value,
-        total:totalPriceForStore,
-        amount:amount.value,
-        category:category.value.toLowerCase(),
-    }
+        name: name.value.toLowerCase(),
+        price: price.value,
+        ads: ads.value,
+        taxes: taxes.value,
+        discount: discount.value,
+        total: totalPriceForStore,
+        amount: amount.value,
+        category: category.value.toLowerCase(),
+    };
 
-    if(mood === 'create'){
-        if(productObject.amount > 1){
-        for(let i=0; i<productObject.amount; i++){
-            products.push(productObject);
+    // Validation for required fields
+    const isValid = name.value && price.value && category.value;
+
+    if (isValid) {
+        // Check for "create" mode
+        if (mood === 'create') {
+            if (productObject.amount > 1) {
+                for (let i = 0; i < productObject.amount; i++) {
+                    products.push({ ...productObject });
+                }
+            } else {
+                products.push(productObject);
+            }
+        } else {
+            // Update existing product in edit mode
+            products[tmp] = productObject;
+            mood = 'create';
+            amount.style.display = "block";
         }
-        }else{
-            products.push(productObject);
-        }
-    }else{
-        products[tmp] = productObject;
-        mood = 'create';
-        amount.style.display = "block";
+
+        // Save products array to localStorage
+        localStorage.setItem('products', JSON.stringify(products));
+
+        // Clear input fields only if the data was valid
+        clearInputs();
+        showAllProducts();
+    } else {
+        alert("name, price and category are required!");
     }
-    
-    localStorage.setItem('products', JSON.stringify(products));
-    clearInputs();
-    showAllProducts();
-}
+};
 
 
 

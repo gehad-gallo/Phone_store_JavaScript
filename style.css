@@ -7,8 +7,8 @@
     width: 80%;
     text-align: center;
     margin-left: 10%;    
-    background-color: lightgray;
-
+    background-color:  #b7b4d8;
+    padding: 10px;
 }
 
 
@@ -16,6 +16,8 @@
     margin-top: 40px;
     text-transform: uppercase;
     padding: 20px;
+    text-shadow: 2px 2px 4px #321680;
+
 }
 
 h2{
