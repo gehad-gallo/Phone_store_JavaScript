@@ -24,10 +24,10 @@ This app allows users to manage products, calculate prices, and search products 
 Clone this repository and open the project files in your preferred code editor.
 
 ```bash
-  git clone [https://github.com/your-username/phone-store-app.git]
+  git clone https://github.com/your-username/phone-store-app.git
 ```
 ```bash
-  cd phone-store-app
+  cd Phone_store_JavaScript
 ```
   Then, open index.html in a web browser to launch the app.
 
@@ -35,14 +35,11 @@ Clone this repository and open the project files in your preferred code editor.
 
 ## Usage
 
-```javascript
 Add a New Product: Fill in the form with the required product details (price, ads, taxes, and discount).
 The total price will be automatically calculated and displayed.
 Edit or Delete Products: Use the buttons to update or remove items from the inventory.
 Search for Products: Use the search feature to find products by name or category.
 Local Storage: All data is saved locally in your browser's storage, so it persists even after refreshing or closing the browser.
-
-```
 
 
 ## Technologies Used
