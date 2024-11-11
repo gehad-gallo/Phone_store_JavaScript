@@ -213,13 +213,13 @@ function getSearchMood(id){
     
 }
 
+function searchData(value) {
+    let table = '';
+    value = value.toLowerCase();
 
-
-function searchData(value){
-    let table ='';
-    if(searchMood == 'name'){
-        for(let i=0; i<products.length; i++){
-            if(products[i].name.includes(value.toLowerCase())){
+    if (searchMood === 'name') {
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].name.toLowerCase().includes(value)) {
                 table += `
                 <tr>
                     <td scope="row">${products[i].name}</td>
@@ -235,14 +235,11 @@ function searchData(value){
                     </td>
                 </tr>
                 `;
-            }else{
-                document.getElementById('tbody').innerHTML = table;
-
             }
         }
-    }else{
-        for(let i=0; i<products.length; i++){
-            if(products[i].category.includes(value.toLowerCase())){
+    } else {
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].category.toLowerCase().includes(value)) {
                 table += `
                 <tr>
                     <td scope="row">${products[i].name}</td>
@@ -258,12 +255,9 @@ function searchData(value){
                     </td>
                 </tr>
                 `;
-            }else{
-                document.getElementById('tbody').innerHTML = table;
-
             }
         }
     }
+
+    document.getElementById('tbody').innerHTML = table;
 }
-
-
