@@ -24,10 +24,13 @@ This app allows users to manage products, calculate prices, and search products 
 Clone this repository and open the project files in your preferred code editor.
 
 ```bash
-  git clone [https://github.com/your-username/phone-store-app.git](https://github.com/gehad-gallo/Phone_store_JavaScript.git)
-  cd phone-store-app
-  Then, open index.html in a web browser to launch the app.
+  git clone [https://github.com/your-username/phone-store-app.git]
 ```
+```bash
+  cd phone-store-app
+```
+  Then, open index.html in a web browser to launch the app.
+
 
 
 ## Usage
