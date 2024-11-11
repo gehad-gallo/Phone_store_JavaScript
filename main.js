@@ -148,6 +148,7 @@ showAllProducts();
 
 // Delete specific product
 ///////////////////////////
+
 function deletProduct(i) {
     if (window.confirm("Are you sure that you want to delete this item?")) {
         products.splice(i, 1);
@@ -155,6 +156,7 @@ function deletProduct(i) {
         showAllProducts();
     }
 }
+
 
 
 //Delete all products
@@ -170,8 +172,10 @@ function deleteAllProducts(){
 }
 
 
+
 //Update product 
 ////////////////////
+
 function updateProduct(i){
     name.value = products[i].name;
     price.value = products[i].price;
@@ -189,8 +193,12 @@ function updateProduct(i){
         behavior: 'smooth'
     })
 
+
+
 }
 
+// get search mood by product name or category
+///////////////////////////////////////////////
 function getSearchMood(id){
     let search = document.getElementById('seachInput');
     if(id == 'nameSearch'){
@@ -204,6 +212,8 @@ function getSearchMood(id){
     showAllProducts();
     
 }
+
+
 
 function searchData(value){
     let table ='';
@@ -255,3 +265,5 @@ function searchData(value){
         }
     }
 }
+
+
